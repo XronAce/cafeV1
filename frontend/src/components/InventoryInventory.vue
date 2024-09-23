@@ -16,6 +16,7 @@
         </v-card-title >        
 
         <v-card-text>
+            <Number label="OrderId" v-model="value.orderId" :editMode="editMode" :inputUI="''"/>
             <String label="StockName" v-model="value.stockName" :editMode="editMode" :inputUI="''"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
         </v-card-text>

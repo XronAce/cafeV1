@@ -109,6 +109,7 @@
             me.values = temp.data._embedded.inventories;
             
             me.newValue = {
+                'orderId': 0,
                 'stockName': '',
                 'qty': 0,
             }

@@ -17,6 +17,8 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long orderId;
+
     private String stockName;
 
     private Integer qty;

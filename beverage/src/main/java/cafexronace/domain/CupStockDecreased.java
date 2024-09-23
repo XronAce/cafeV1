@@ -10,6 +10,7 @@ import lombok.*;
 public class CupStockDecreased extends AbstractEvent {
 
     private Long id;
+    private Long orderId;
     private String stockName;
     private Integer qty;
 }
