@@ -10,14 +10,14 @@
 
 ## 2. 클라우드 네이티브 아키텍처 설계
 - gateway를 통해 단일 진입점을 두고, 총 5개의 서비스를 가지도록 설계한다(MSA):
-		- order: 주문 서비스
-		- beverage: 음료 서비스
-		- notification: 알림 서비스
-		- inventory: 재고 서비스
-		- kiosk: 키오스크 주문 화면 서비스
+	- order: 주문 서비스
+	- beverage: 음료 서비스
+	- notification: 알림 서비스
+	- inventory: 재고 서비스
+	- kiosk: 키오스크 주문 화면 서비스
 - 각 서비스는 각 서비스만의 데이터베이스(embedded H2)를 가져 서비스 간 결합성을 낮춘다.
 - 각 서비스 간 통신은 kafka를 이용한 Pub/Sub을 통해 event-driven 아키텍처로 구성하여 결합도를 낮춘다.
-		- 이에 따라 서비스 중 하나가 장애가 발생하더라도 kafka가 event를 들고 있어 추후 서비스 복구 이후 event가 consume 될때 재개될 수 있도록 한다.
+	- 이에 따라 서비스 중 하나가 장애가 발생하더라도 kafka가 event를 들고 있어 추후 서비스 복구 이후 event가 consume 될때 재개될 수 있도록 한다.
 - Docker container 기술을 사용하여 서비스 배포 환경을 항시 동일한 환경으로 유지되도록 한다.
 - Docker container image를 ACR(Azure cloud registry)에 저장하여 컨테이너 버전 관리를 수행한다.
 - Azure 기반 환경 속에서 AKS(Azure Kubernetes Service)를 활용하여 컨테이너 오케스트레이션을 도입한다.
