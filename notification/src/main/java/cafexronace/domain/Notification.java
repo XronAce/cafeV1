@@ -61,16 +61,18 @@ public class Notification {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void notifyCustomer(OrderCanceled orderCanceled) {
+    public static void notifyCustomer(OrderCancelled orderCancelled) {
         //implement business logic here:
 
-        /** Example 1:  new item 
         Notification notification = new Notification();
+        notification.setCustomerId(orderCancelled.getCustomerId());
+        notification.setOrderId(orderCancelled.getId());
+        notification.setNotificationDate(new Date());
+        notification.setOrderStatus("cancelled");
         repository().save(notification);
 
         CustomerNotified customerNotified = new CustomerNotified(notification);
         customerNotified.publishAfterCommit();
-        */
 
         /** Example 2:  finding and process
         
@@ -86,7 +88,4 @@ public class Notification {
         */
 
     }
-    //>>> Clean Arch / Port Method
-
 }
-//>>> DDD / Aggregate Root

@@ -44,20 +44,20 @@ public class Inventory {
         cupOutOfStock.publishAfterCommit();
         */
 
-        /** Example 2:  finding and process
         
-        repository().findById(orderPlaced.get???()).ifPresent(inventory->{
-            
-            inventory // do something
-            repository().save(inventory);
+        repository().findByStockName("cup").ifPresent(inventory->{
+            inventory.setOrderId(orderPlaced.getId());
+            if(inventory.getQty() >= orderPlaced.getBeverageQty()) {
+                inventory.setQty(inventory.getQty() - orderPlaced.getBeverageQty());
+                repository().save(inventory);
 
-            CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
-            cupStockDecreased.publishAfterCommit();
-            CupOutOfStock cupOutOfStock = new CupOutOfStock(inventory);
-            cupOutOfStock.publishAfterCommit();
-
+                CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
+                cupStockDecreased.publishAfterCommit();
+            } else {
+                CupOutOfStock cupOutOfStock = new CupOutOfStock(inventory);
+                cupOutOfStock.publishAfterCommit();
+            }
          });
-        */
 
     }
     //>>> Clean Arch / Port Method
