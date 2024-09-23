@@ -13,8 +13,11 @@ public class CupOutOfStock extends AbstractEvent {
 
     private Long id;
     private Long orderId;
+    private String beverageName;
+    private Long customerId;
     private String stockName;
     private Integer qty;
+    private Integer beverageQty;
 
     public CupOutOfStock(Inventory aggregate) {
         super(aggregate);

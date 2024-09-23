@@ -19,9 +19,15 @@ public class Inventory {
 
     private Long orderId;
 
+    private Long customerId;
+
+    private String beverageName;
+
     private String stockName;
 
     private Integer qty;
+
+    private Integer beverageQty;
 
     public static InventoryRepository repository() {
         InventoryRepository inventoryRepository = InventoryApplication.applicationContext.getBean(
@@ -46,12 +52,16 @@ public class Inventory {
 
         
         repository().findByStockName("cup").ifPresent(inventory->{
-            inventory.setOrderId(orderPlaced.getId());
             if(inventory.getQty() >= orderPlaced.getBeverageQty()) {
                 inventory.setQty(inventory.getQty() - orderPlaced.getBeverageQty());
                 repository().save(inventory);
 
-                CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
+                Inventory inventoryCopy = new Inventory();
+                inventoryCopy.setOrderId(orderPlaced.getId());
+                inventoryCopy.setCustomerId(orderPlaced.getCustomerId());
+                inventoryCopy.setBeverageName(orderPlaced.getBeverageName());
+                inventoryCopy.setBeverageQty(orderPlaced.getBeverageQty());
+                CupStockDecreased cupStockDecreased = new CupStockDecreased(inventoryCopy);
                 cupStockDecreased.publishAfterCommit();
             } else {
                 CupOutOfStock cupOutOfStock = new CupOutOfStock(inventory);
