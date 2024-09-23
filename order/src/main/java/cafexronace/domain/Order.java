@@ -23,8 +23,8 @@ public class Order {
     private Long customerId;
     private String beverageName;
     private Integer beverageQty;
-    private Date orderDate;
-    private String orderStatus;
+    private Date orderDate = new Date();
+    private String orderStatus = "pending";
 
     @PostPersist
     public void onPostPersist() {
