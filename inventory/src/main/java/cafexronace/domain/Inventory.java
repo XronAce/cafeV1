@@ -40,6 +40,8 @@ public class Inventory {
 
         CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
         cupStockDecreased.publishAfterCommit();
+        CupOutOfStock cupOutOfStock = new CupOutOfStock(inventory);
+        cupOutOfStock.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -51,6 +53,8 @@ public class Inventory {
 
             CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
             cupStockDecreased.publishAfterCommit();
+            CupOutOfStock cupOutOfStock = new CupOutOfStock(inventory);
+            cupOutOfStock.publishAfterCommit();
 
          });
         */
