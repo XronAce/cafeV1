@@ -36,13 +36,15 @@ public class Beverage {
     public static void makeBeverage(CupStockDecreased cupStockDecreased) {
         //implement business logic here:
 
-        /** Example 1:  new item 
         Beverage beverage = new Beverage();
+        beverage.setCustomerId(cupStockDecreased.getCustomerId());
+        beverage.setOrderId(cupStockDecreased.getOrderId());
+        beverage.setBeverageName(cupStockDecreased.getBeverageName());
+        beverage.setBeverageQty(cupStockDecreased.getBeverageQty());
         repository().save(beverage);
 
         BeverageMade beverageMade = new BeverageMade(beverage);
         beverageMade.publishAfterCommit();
-        */
 
         /** Example 2:  finding and process
         
