@@ -113,6 +113,7 @@
                 'beverageName': '',
                 'beverageQty': 0,
                 'orderDtm': '2024-09-23',
+                'orderStatus': '',
             }
         },
         methods:{

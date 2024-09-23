@@ -45,6 +45,7 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -53,6 +54,7 @@
                             [ BeverageName :  {{data.beverageName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ BeverageQty :  {{data.beverageQty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ OrderDtm :  {{data.orderDtm }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ OrderStatus :  {{data.orderStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -124,6 +126,7 @@
                 'beverageName': '',
                 'beverageQty': 0,
                 'orderDtm': '2024-09-23',
+                'orderStatus': '',
             }
         },
         methods: {

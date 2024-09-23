@@ -38,6 +38,8 @@ public class Inventory {
         Inventory inventory = new Inventory();
         repository().save(inventory);
 
+        CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
+        cupStockDecreased.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -47,6 +49,8 @@ public class Inventory {
             inventory // do something
             repository().save(inventory);
 
+            CupStockDecreased cupStockDecreased = new CupStockDecreased(inventory);
+            cupStockDecreased.publishAfterCommit();
 
          });
         */

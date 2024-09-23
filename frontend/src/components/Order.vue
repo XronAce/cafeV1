@@ -20,6 +20,7 @@
             <String label="BeverageName" v-model="value.beverageName" :editMode="editMode" :inputUI="''"/>
             <Number label="BeverageQty" v-model="value.beverageQty" :editMode="editMode" :inputUI="''"/>
             <Date label="OrderDtm" v-model="value.orderDtm" :editMode="editMode" :inputUI="''"/>
+            <String label="OrderStatus" v-model="value.orderStatus" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

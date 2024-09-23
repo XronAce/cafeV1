@@ -38,5 +38,21 @@ public class PolicyHandler {
         // Sample Logic //
         Notification.notifyCustomer(event);
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='OrderCanceled'"
+    )
+    public void wheneverOrderCanceled_NotifyCustomer(
+        @Payload OrderCanceled orderCanceled
+    ) {
+        OrderCanceled event = orderCanceled;
+        System.out.println(
+            "\n\n##### listener NotifyCustomer : " + orderCanceled + "\n\n"
+        );
+
+        // Sample Logic //
+        Notification.notifyCustomer(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

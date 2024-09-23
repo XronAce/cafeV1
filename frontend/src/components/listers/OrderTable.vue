@@ -71,6 +71,7 @@
                     { text: "beverageName", value: "beverageName" },
                     { text: "beverageQty", value: "beverageQty" },
                     { text: "orderDtm", value: "orderDtm" },
+                    { text: "orderStatus", value: "orderStatus" },
                 ],
             order : [],
             newValue: {},
@@ -92,6 +93,7 @@
                 'beverageName': '',
                 'beverageQty': 0,
                 'orderDtm': '2024-09-23',
+                'orderStatus': '',
             }
         },
         methods: {

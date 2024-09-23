@@ -17,6 +17,9 @@
             <div>
                 <Date label="OrderDtm" v-model="item.orderDtm" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <String label="OrderStatus" v-model="item.orderStatus" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

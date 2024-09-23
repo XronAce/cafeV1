@@ -58,6 +58,34 @@ public class Notification {
         */
 
     }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void notifyCustomer(OrderCanceled orderCanceled) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Notification notification = new Notification();
+        repository().save(notification);
+
+        CustomerNotified customerNotified = new CustomerNotified(notification);
+        customerNotified.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderCanceled.get???()).ifPresent(notification->{
+            
+            notification // do something
+            repository().save(notification);
+
+            CustomerNotified customerNotified = new CustomerNotified(notification);
+            customerNotified.publishAfterCommit();
+
+         });
+        */
+
+    }
     //>>> Clean Arch / Port Method
 
 }

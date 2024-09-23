@@ -22,5 +22,21 @@ public class PolicyHandler {
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='CupOutOfStock'"
+    )
+    public void wheneverCupOutOfStock_CancelOrder(
+        @Payload CupOutOfStock cupOutOfStock
+    ) {
+        CupOutOfStock event = cupOutOfStock;
+        System.out.println(
+            "\n\n##### listener CancelOrder : " + cupOutOfStock + "\n\n"
+        );
+
+        // Sample Logic //
+        Order.cancelOrder(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
