@@ -36,13 +36,15 @@ public class Notification {
     public static void notifyCustomer(BeverageMade beverageMade) {
         //implement business logic here:
 
-        /** Example 1:  new item 
         Notification notification = new Notification();
+        notification.setCustomerId(beverageMade.getCustomerId());
+        notification.setOrderId(beverageMade.getOrderId());
+        notification.setNotificationDate(new Date());
+        notification.setOrderStatus("completed");
         repository().save(notification);
 
         CustomerNotified customerNotified = new CustomerNotified(notification);
         customerNotified.publishAfterCommit();
-        */
 
         /** Example 2:  finding and process
         
