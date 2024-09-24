@@ -135,7 +135,7 @@ pipeline {
                         'gateway': {
                             dir('gateway') {
                                 sh """
-                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deploy.yaml > output.yaml
+                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
                                 kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
@@ -146,7 +146,7 @@ pipeline {
                         'order': {
                             dir('order') {
                                 sh """
-                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deploy.yaml > output.yaml
+                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
                                 kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
@@ -157,7 +157,7 @@ pipeline {
                         'inventory': {
                             dir('inventory') {
                                 sh """
-                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deploy.yaml > output.yaml
+                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
                                 kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
@@ -168,7 +168,7 @@ pipeline {
                         'notification': {
                             dir('notification') {
                                 sh """
-                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deploy.yaml > output.yaml
+                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
                                 kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
@@ -179,7 +179,7 @@ pipeline {
                         'beverage': {
                             dir('beverage') {
                                 sh """
-                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deploy.yaml > output.yaml
+                                sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
                                 kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
