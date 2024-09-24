@@ -5,7 +5,7 @@ metadata:
   labels:
     app: order
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: order
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: order
-          image: "username/order:latest"
+          image: "user18.azurecr.io/order:latest"
           ports:
             - containerPort: 8080
           readinessProbe:

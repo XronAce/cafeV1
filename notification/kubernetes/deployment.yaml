@@ -5,7 +5,7 @@ metadata:
   labels:
     app: notification
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: notification
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: notification
-          image: "username/notification:latest"
+          image: "user18.azurecr.io/notification:latest"
           ports:
             - containerPort: 8080
           readinessProbe:

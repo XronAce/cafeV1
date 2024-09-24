@@ -5,7 +5,7 @@ metadata:
   labels:
     app: beverage
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: beverage
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: beverage
-          image: "username/beverage:latest"
+          image: "user18.azurecr.io/beverage:latest"
           ports:
             - containerPort: 8080
           readinessProbe:
