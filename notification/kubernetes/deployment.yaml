@@ -19,6 +19,9 @@ spec:
           image: "user18.azurecr.io/notification:latest"
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"
           readinessProbe:
             httpGet:
               path: '/actuator/health'
