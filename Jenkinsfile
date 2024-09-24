@@ -26,13 +26,33 @@ pipeline {
             steps {
                 withMaven(maven: 'Maven') {
                     script {
-                        def modules = ['gateway', 'order', 'inventory', 'beverage', 'notification']
-
-                        for (module in modules) {
-                            dir(module) {
-                                sh 'mvn clean package -DskipTests'
+                        parallel(
+                            'gateway': {
+                                dir('gateway') {
+                                    sh 'mvn clean package -DskipTests'
+                                }
+                            },
+                            'order': {
+                                dir('order') {
+                                    sh 'mvn clean package -DskipTests'
+                                }
+                            },
+                            'inventory': {
+                                dir('inventory') {
+                                    sh 'mvn clean package -DskipTests'
+                                }
+                            },
+                            'notification': {
+                                dir('notification') {
+                                    sh 'mvn clean package -DskipTests'
+                                }
+                            },
+                            'beverage': {
+                                dir('beverage') {
+                                    sh 'mvn clean package -DskipTests'
+                                }
                             }
-                        }
+                        )
                     }
                 }
             }
