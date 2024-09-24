@@ -137,7 +137,7 @@ pipeline {
                                 sh """
                                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
-                                kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
+                                kubectl apply -f (istioctl kube-inject -f output.yaml) -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
                                 rm output.yaml
                                 """
@@ -148,7 +148,7 @@ pipeline {
                                 sh """
                                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
-                                kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
+                                kubectl apply -f (istioctl kube-inject -f output.yaml) -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
                                 rm output.yaml
                                 """
@@ -159,7 +159,7 @@ pipeline {
                                 sh """
                                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
-                                kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
+                                kubectl apply -f (istioctl kube-inject -f output.yaml) -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
                                 rm output.yaml
                                 """
@@ -170,7 +170,7 @@ pipeline {
                                 sh """
                                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
-                                kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
+                                kubectl apply -f (istioctl kube-inject -f output.yaml) -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
                                 rm output.yaml
                                 """
@@ -181,7 +181,7 @@ pipeline {
                                 sh """
                                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
                                 cat output.yaml
-                                kubectl apply -f output.yaml -n ${AKS_NAMESPACE}
+                                kubectl apply -f (istioctl kube-inject -f output.yaml) -n ${AKS_NAMESPACE}
                                 kubectl apply -f kubernetes/service.yaml -n ${AKS_NAMESPACE}
                                 rm output.yaml
                                 """
