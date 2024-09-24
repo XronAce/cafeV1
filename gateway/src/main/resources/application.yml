@@ -65,18 +65,19 @@ spring:
           uri: http://notification:8080
           predicates:
             - Path=/notifications/**, 
-        - id: kiosk
-          uri: http://kiosk:8080
-          predicates:
-            - Path=, 
         - id: inventory
           uri: http://inventory:8080
           predicates:
-            - Path=, 
-        - id: frontend
-          uri: http://frontend:8080
-          predicates:
-            - Path=/**
+            - Path=/inventories/**
+        # comment out unused instances temporarily
+        # - id: kiosk
+        #   uri: http://kiosk:8080
+        #   predicates:
+        #     - Path=,
+        # - id: frontend
+        #   uri: http://frontend:8080
+        #   predicates:
+        #     - Path=/**
       globalcors:
         corsConfigurations:
           '[/**]':
