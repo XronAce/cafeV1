@@ -56,7 +56,7 @@ spring:
         - id: order
           uri: http://order:8080
           predicates:
-            - Path=/undefined/**, 
+            - Path=/orders/**, 
         - id: beverage
           uri: http://beverage:8080
           predicates:
