@@ -44,6 +44,7 @@
 ### 단일 진입점 - Gateway
 ```yaml
 # gateway/src/main/resources/application.yml
+
 server:
   port: 8088
 
@@ -102,7 +103,7 @@ spring:
         - id: order
           uri: http://order:8080
           predicates:
-            - Path=/undefined/**, 
+            - Path=/orders/**, 
         - id: beverage
           uri: http://beverage:8080
           predicates:
@@ -111,18 +112,19 @@ spring:
           uri: http://notification:8080
           predicates:
             - Path=/notifications/**, 
-        - id: kiosk
-          uri: http://kiosk:8080
-          predicates:
-            - Path=, 
         - id: inventory
           uri: http://inventory:8080
           predicates:
-            - Path=, 
-        - id: frontend
-          uri: http://frontend:8080
-          predicates:
-            - Path=/**
+            - Path=/inventories/**
+        # comment out unused instances temporarily
+        # - id: kiosk
+        #   uri: http://kiosk:8080
+        #   predicates:
+        #     - Path=,
+        # - id: frontend
+        #   uri: http://frontend:8080
+        #   predicates:
+        #     - Path=/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -136,7 +138,6 @@ spring:
 
 server:
   port: 8080
-
 ```
 위와 같이 gateway 환경을 맞추어, order, beverage, notification 서비스를 모두 띄운 후 gateway 포트인 8080 포트로 각 서비스에 접근되는지 확인한다.  
 테스트는 명확한 포트 구분을 확인하기 위해 로컬 환경에서 진행한다.  
