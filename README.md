@@ -12,6 +12,15 @@
 	- [보상처리 - Compensation](#보상처리---compensation)
 	- [정상 구동 테스트 프로세스](#정상-구동-테스트-프로세스)
 5. [클라우드 네이티브 운영](#5-클라우드-네이티브-운영)  
+	- [Azure 리소스 그룹, ACR, AKS, VM 구성](#1-azure-portal-내-리소스-그룹rsrcgrp-클라우드-레지스트리acr-쿠버네티스aks-가상머신vm-구성)
+	- [VM 내 필수 자료 설치](#3-가상-머신-내-필요한-자료-설치)
+	- [Jenkins 내부 설정](#4-jenkins-내부-설정)
+	- [AKS 위 cafe 프로젝트 정상 배포 검증](#5-aks-위에서-구동되는-cafe-프로젝트-네트워크-정상-수행-검증)
+	- [컨테이너 자동 확장 - HPA](#6-컨테이너-자동-확장---hpa)
+	- [컨테이너로부터 환경분리 - ConfigMap](#7-컨테이너로부터-환경분리---configmap)
+	- [클라우드 스토리지 활용 - PVC](#8-클라우드-스토리지-활용---pvcpersistent-volume-claim)
+	- [서비스 메쉬 응용 - Mesh with Istio](#10-서비스-메쉬-응용---mesh-with-istio)
+	- [통합 모니터링 - Istio 기반 Prometheus & Grafana](#11-통합-모니터링---istio-기반-prometheus--grafana)
 
 ## 1. 서비스 시나리오
 1. 고객이 키오스크를 통해 메뉴를 선택하여 주문한다.
@@ -555,7 +564,7 @@ kubectl get pods -n cafe -w
 ![alt text](./img/5_hpa_4.png)  
 부하가 증가함에 따라 order의 pod replica가 3개로 scale-up 된 것을 확인할 수 있다. 부하 테스트 종료 후 약 5분 정도의 대기시간 이후에 HPA가 더 이상 3개를 유지할 필요가 없음을 감지하고, 1개로 scale-down 되는 모습까지 확인할 수 있다.
 
-#### 7. 컨테이너로부터 환경분리 - ConfigMap/Secrets
+#### 7. 컨테이너로부터 환경분리 - ConfigMap
 컨테이너 배포 운영 과정에서 단순 환경변수 변경을 위한 재배포는 효율이 떨어진다. 따라서, ConfigMap을 통해 환경변수를 변경하는 테스트를 수행한다.  
   
 아래 예시는 단순히 order instance의 로깅 레벨을 DEBUG 수준으로 내리는 작업을 수행한다.  
@@ -801,7 +810,7 @@ kubectl get ingress -n istio-system
 - 또한, replicas=1 이더라도 Sidecar 주입 시 pod는 Ready 값이 2/2로 표기된다:
 ![alt text](./img/10_istio_4.png)
 
-#### 11. 통합 모니터링 - Istio 기반 Grafana
+#### 11. 통합 모니터링 - Istio 기반 Prometheus & Grafana
 - LoadBalancer type의 External-IP는 갯수 제한이 있어 10번에서 수행했었던 Jaeger와 Kiali를 ClusterIP type으로 변경하여 회수한다.
 ```sh
 kubectl patch svc kiali -n istio-system -p '{"spec": {"type": "ClusterIP"}}'
