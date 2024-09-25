@@ -4,9 +4,14 @@
 ## 목차
 1. [서비스 시나리오](#1-서비스-시나리오)
 2. [클라우드 네이티브 아키텍처 설계](#2-클라우드-네이티브-아키텍처-설계)
-3. [클라우드 네이티브 모델링 - 이벤트 스토밍 기반 도메인 분석](#3-클라우드-네이티브-모델링---이벤트-스토밍-기반-도메인-분석)
-4. [클라우드 네이티브 개발](#4-클라우드-네이티브-개발)
-5. [클라우드 네이티브 운영](#5-클라우드-네이티브-운영)
+3. [클라우드 네이티브 모델링 - 이벤트 스토밍 기반 도메인 분석](#3-클라우드-네이티브-모델링---이벤트-스토밍-기반-도메인-분석)  
+4. [클라우드 네이티브 개발](#4-클라우드-네이티브-개발)  
+	- [단일 진입점 - Gateway](#단일-진입점---gateway)
+	- [분산 데이터 프로젝션 - CQRS](#분산-데이터-프로젝션---cqrs)
+	- [분산 트랜젝션 - SAGA](#분산-트랜젝션---saga)
+	- [보상처리 - Compensation](#보상처리---compensation)
+	- [정상 구동 테스트 프로세스](#정상-구동-테스트-프로세스)
+5. [클라우드 네이티브 운영](#5-클라우드-네이티브-운영)  
 
 ## 1. 서비스 시나리오
 1. 고객이 키오스크를 통해 메뉴를 선택하여 주문한다.
@@ -201,7 +206,7 @@ Choreography Saga를 통해 중앙 제어없이 서비스끼리 kafka event로 P
 
 ## 5. 클라우드 네이티브 운영
 
-### 클라우드 배포 역량
+### 클라우드 배포 with Azure
 
 #### 1. azure portal 내 리소스 그룹(rsrcgrp), 클라우드 레지스트리(acr), 쿠버네티스(aks), 가상머신(vm) 구성
 ![alt text](./img/5_cloud_deploy_1.png)  
@@ -522,7 +527,7 @@ kubectl autoscale deployment notification -n cafe --cpu-percent=50 --min=1 --max
 3. `kubectl get hpa -n cafe`로 hpa 생성 확인 및 metrics server 감지 확인
 ![alt text](./img/5_hpa_3.png)  
 4. 부하 테스트 목적 siege pod 생성
-```sh
+```yaml
 kubectl apply -f - <<EOF
 apiVersion: v1
 kind: Pod
@@ -567,7 +572,7 @@ data:
     logging:
       level:
         root: INFO
-        com.example: DEBUG
+        cafexronace: DEBUG
 EOF
 ```
 2. order의 deployment.yaml을 아래처럼 수정하여 ConfigMap을 도입하도록 변경 배포 수행
